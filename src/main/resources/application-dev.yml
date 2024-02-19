@@ -1,0 +1,24 @@
+# Enabling H2 Console
+spring:
+  h2:
+    console:
+      enabled=true:
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: 'sa'
+    password: 'sa'
+    jpa:
+      database-platform: org.hibernate.dialect.H2Dialect
+
+logging:
+  config: classpath:logback-spring.xml
+  level:
+    ROOT: info
+    org.hibernate: error
+    org.apache: error
+    com.zaxxer.hikari.pool: error
+    org.springframework.web: error
+    org.springframework.web.filter.CommonsRequestLoggingFilter: error
+    zw.co.poscloud.tapswitchpull: info
+

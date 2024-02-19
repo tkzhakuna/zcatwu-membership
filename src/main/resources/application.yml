@@ -1,0 +1,22 @@
+server:
+  port: 8081
+spring:
+  application:
+    name : mushandi-system
+
+  jpa:
+    properties:
+      hibernate:
+        enable_lazy_load_no_trans: true
+        ddl-auto: update
+  profiles:
+    active: prod
+
+  jackson:
+    serialization:
+      FAIL_ON_EMPTY_BEANS: false
+
+
+#spring.jpa.show-sql=true
+
+tempDirectory: tmp/

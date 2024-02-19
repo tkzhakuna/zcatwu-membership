@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.16.0-48579d909b7943b64690c65c71e07e0b80981928  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6d5bf05c-9b90-4ef9-b629-3c06e0aa0828">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="heading" class="java.lang.String"/>
+	<parameter name="male" class="java.lang.Integer"/>
+	<parameter name="female" class="java.lang.Integer"/>
+	<parameter name="total" class="java.lang.Integer"/>
+	<parameter name="printedby" class="java.lang.String"/>
+	<parameter name="institutionName" class="java.lang.String"/>
+	<parameter name="realPath" class="java.lang.String"/>
+	<field name="member.surname" class="java.lang.String"/>
+	<field name="member.firstname" class="java.lang.String"/>
+	<field name="member.nationalId" class="java.lang.String"/>
+	<field name="member.gender" class="java.lang.String"/>
+	<field name="member.grade.gradeCode" class="java.lang.String"/>
+	<field name="dateJoined" class="java.lang.Object"/>
+	<field name="monthlySubs" class="java.lang.Double"/>
+	<field name="member.grade.basicWage" class="java.lang.Double"/>
+	<variable name="memberName" class="java.lang.String">
+		<variableExpression><![CDATA[$F{member.surname}+" "+$F{member.firstname}]]></variableExpression>
+	</variable>
+	<variable name="member.grade.weeklyRate_1" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{monthlySubs}]]></variableExpression>
+	</variable>
+	<variable name="monthlySubs1" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{monthlySubs}]]></variableExpression>
+	</variable>
+	<variable name="pageNumber" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement stretchType="ContainerHeight" x="126" y="57" width="416" height="20" isPrintWhenDetailOverflows="true" uuid="458bbe2c-5110-4088-b932-e9637a97e5fc"/>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{heading}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement x="456" y="0" width="100" height="15" uuid="1c765585-daa5-4532-a59c-1373c3586b7f">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box padding="2"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="400" y="0" width="56" height="15" uuid="3cf53b86-74c9-40e6-b958-4e94288ebd99">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box padding="2"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Printed on]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="15" width="56" height="15" uuid="76a2ebc6-2197-49a8-b35a-18593b0c94bb">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box padding="2"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Printed by]]></text>
+			</staticText>
+			<textField>
+				<reportElement stretchType="RelativeToBandHeight" x="456" y="15" width="100" height="15" uuid="13d1f5e9-9389-461b-a12e-a64953eed10f">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box padding="2"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{printedby}]]></textFieldExpression>
+			</textField>
+			<image scaleImage="FillFrame">
+				<reportElement x="22" y="0" width="78" height="50" uuid="042f49a5-dc40-4515-a5dd-2b7624e1edc9"/>
+				<imageExpression><![CDATA[$P{realPath}.toString()]]></imageExpression>
+			</image>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement stretchType="ContainerHeight" x="0" y="51" width="121" height="15" isPrintWhenDetailOverflows="true" uuid="a9898f7b-1801-450f-bc73-425f3f00c8c8">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{institutionName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="192" y="1" width="170" height="30" uuid="797d355b-6942-4ad9-a155-c482345d9b79"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Subscriptions Invoice]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" x="4" y="2" width="141" height="18" isPrintWhenDetailOverflows="true" uuid="07bc5fed-179a-4164-903f-59d7385e0acf"/>
+				<box padding="1">
+					<pen lineWidth="0.5" lineColor="#E1EEFA"/>
+					<topPen lineWidth="1.0" lineColor="#DEF1FC"/>
+					<leftPen lineWidth="1.0" lineColor="#DEF1FC"/>
+					<bottomPen lineWidth="1.0" lineColor="#DEF1FC"/>
+					<rightPen lineWidth="1.0" lineColor="#DEF1FC"/>
+				</box>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Name Of Member]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" x="145" y="2" width="86" height="18" isPrintWhenDetailOverflows="true" uuid="ce3b8169-df55-4bbd-a450-d87a7c44bc81"/>
+				<box padding="1">
+					<pen lineWidth="0.5" lineColor="#E1EEFA"/>
+					<topPen lineWidth="1.0" lineColor="#DEF1FC"/>
+					<leftPen lineWidth="1.0" lineColor="#DEF1FC"/>
+					<bottomPen lineWidth="1.0" lineColor="#DEF1FC"/>
+					<rightPen lineWidth="1.0" lineColor="#DEF1FC"/>
+				</box>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[National Id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" x="231" y="2" width="44" height="18" isPrintWhenDetailOverflows="true" uuid="78e69efa-9580-488d-b37c-0389dbd079db"/>
+				<box padding="1">
+					<pen lineWidth="0.5" lineColor="#E1EEFA"/>
+					<topPen lineWidth="1.0" lineColor="#DEF1FC"/>
+					<leftPen lineWidth="1.0" lineColor="#DEF1FC"/>
+					<bottomPen lineWidth="1.0" lineColor="#DEF1FC"/>
+					<rightPen lineWidth="1.0" lineColor="#DEF1FC"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Gender]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" x="275" y="2" width="81" height="18" isPrintWhenDetailOverflows="true" uuid="c5424605-fba0-49fe-8730-764d2ed3a2df"/>
+				<box padding="1">
+					<pen lineWidth="0.5" lineColor="#E1EEFA"/>
+					<topPen lineWidth="1.0" lineColor="#DEF1FC"/>
+					<leftPen lineWidth="1.0" lineColor="#DEF1FC"/>
+					<bottomPen lineWidth="1.0" lineColor="#DEF1FC"/>
+					<rightPen lineWidth="1.0" lineColor="#DEF1FC"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Grade/Class]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="435" y="2" width="118" height="18" uuid="447e6b23-44a5-4553-8ff9-c22c8af7d745"/>
+				<box padding="1">
+					<pen lineWidth="0.5" lineColor="#E1EEFA"/>
+					<topPen lineWidth="1.0" lineColor="#DEF1FC"/>
+					<leftPen lineWidth="1.0" lineColor="#DEF1FC"/>
+					<bottomPen lineWidth="1.0" lineColor="#DEF1FC"/>
+					<rightPen lineWidth="1.0" lineColor="#DEF1FC"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Monthly Deductions]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="357" y="2" width="78" height="18" uuid="3bc86e10-5299-4de2-9e4c-b791bb9ab68b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ff880822-a31e-453a-a5cf-5d2737f4a81b"/>
+				</reportElement>
+				<box padding="1">
+					<pen lineWidth="0.5" lineColor="#E1EEFA"/>
+					<topPen lineWidth="1.0" lineColor="#DEF1FC"/>
+					<leftPen lineWidth="1.0" lineColor="#DEF1FC"/>
+					<bottomPen lineWidth="1.0" lineColor="#DEF1FC"/>
+					<rightPen lineWidth="1.0" lineColor="#DEF1FC"/>
+				</box>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Basic Wage]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="4" y="0" width="141" height="20" isPrintWhenDetailOverflows="true" uuid="6d43e9b7-9e2c-49f9-9d5b-c878e25c4854"/>
+				<box padding="3">
+					<pen lineWidth="0.5" lineColor="#E1EEFA"/>
+					<topPen lineWidth="1.0" lineColor="#DEF1FC"/>
+					<leftPen lineWidth="1.0" lineColor="#DEF1FC"/>
+					<bottomPen lineWidth="1.0" lineColor="#DEF1FC"/>
+					<rightPen lineWidth="1.0" lineColor="#DEF1FC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{memberName}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="145" y="0" width="86" height="20" isPrintWhenDetailOverflows="true" uuid="88419d6c-5532-4af8-b3c4-16f192d38853"/>
+				<box padding="3">
+					<pen lineWidth="0.5" lineColor="#E1EEFA"/>
+					<topPen lineWidth="1.0" lineColor="#DEF1FC"/>
+					<leftPen lineWidth="1.0" lineColor="#DEF1FC"/>
+					<bottomPen lineWidth="1.0" lineColor="#DEF1FC"/>
+					<rightPen lineWidth="1.0" lineColor="#DEF1FC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{member.nationalId}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="231" y="0" width="44" height="20" isPrintWhenDetailOverflows="true" uuid="4dbc2a73-c32c-471e-a2c6-e5df147c9514"/>
+				<box leftPadding="1">
+					<pen lineWidth="0.5" lineColor="#E1EEFA"/>
+					<topPen lineWidth="1.0" lineColor="#DEF1FC"/>
+					<leftPen lineWidth="1.0" lineColor="#DEF1FC"/>
+					<bottomPen lineWidth="1.0" lineColor="#DEF1FC"/>
+					<rightPen lineWidth="1.0" lineColor="#DEF1FC"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{member.gender}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="275" y="0" width="81" height="20" isPrintWhenDetailOverflows="true" uuid="32007fe0-c759-4464-bc4b-aeb420de9af6"/>
+				<box padding="3">
+					<pen lineWidth="0.5" lineColor="#E1EEFA"/>
+					<topPen lineWidth="1.0" lineColor="#DEF1FC"/>
+					<leftPen lineWidth="1.0" lineColor="#DEF1FC"/>
+					<bottomPen lineWidth="1.0" lineColor="#DEF1FC"/>
+					<rightPen lineWidth="1.0" lineColor="#DEF1FC"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{member.grade.gradeCode}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(-#,##0.00#)">
+				<reportElement x="435" y="0" width="118" height="20" uuid="9d4855a1-938f-4994-91d8-0b7fd0e3f681">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e8c70e9b-e8d1-4e31-a6d8-1340a33d0738"/>
+				</reportElement>
+				<box padding="3">
+					<pen lineWidth="0.5" lineColor="#E1EEFA"/>
+					<topPen lineWidth="1.0" lineColor="#DEF1FC"/>
+					<leftPen lineWidth="1.0" lineColor="#DEF1FC"/>
+					<bottomPen lineWidth="1.0" lineColor="#DEF1FC"/>
+					<rightPen lineWidth="1.0" lineColor="#DEF1FC"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{monthlySubs}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(-#,##0.00#)">
+				<reportElement x="357" y="0" width="78" height="20" uuid="676549af-bd8d-4cea-ba7f-042b63b4ed4a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ff880822-a31e-453a-a5cf-5d2737f4a81b"/>
+				</reportElement>
+				<box padding="3">
+					<pen lineWidth="0.5" lineColor="#E1EEFA"/>
+					<topPen lineWidth="1.0" lineColor="#DEF1FC"/>
+					<leftPen lineWidth="1.0" lineColor="#DEF1FC"/>
+					<bottomPen lineWidth="1.0" lineColor="#DEF1FC"/>
+					<rightPen lineWidth="1.0" lineColor="#DEF1FC"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{member.grade.basicWage}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="40">
+			<staticText>
+				<reportElement x="0" y="19" width="215" height="12" forecolor="#7328FC" uuid="a0109048-728a-4502-bfaf-6173b250a90b"/>
+				<textElement>
+					<font size="8" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Invoice done by SinTaks Systems - tkzhaku@gmail.com]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="5" y="0" width="100" height="19" uuid="9604b23a-896c-466f-a449-09ca96915f20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="101" splitType="Stretch">
+			<staticText>
+				<reportElement x="330" y="5" width="105" height="21" uuid="17dd7409-5e37-4c6e-9893-b4f66c8f64f6"/>
+				<box padding="1"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Deductions]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="33" width="98" height="20" uuid="e760d87d-ca41-46a4-ab00-68ab79321b85"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Male]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="53" width="98" height="20" uuid="317bd604-31d7-433a-b57f-3eb8ae6e0e70"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Female]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="73" width="98" height="20" uuid="e4ba5112-49d9-4efd-89ee-bc3eb3618bd1"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Membership]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="168" y="33" width="78" height="20" uuid="ad0a3326-2203-487d-87a1-c5a541c329f1"/>
+				<textFieldExpression><![CDATA[$P{male}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="168" y="53" width="77" height="20" uuid="8e77c9fa-c509-4c3f-97a3-6e0c3d0462f6"/>
+				<textFieldExpression><![CDATA[$P{female}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="168" y="73" width="77" height="20" uuid="76affe3b-99c3-486d-bb45-3ebd0ed3b7be"/>
+				<textFieldExpression><![CDATA[$P{total}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(-#,##0.00#)">
+				<reportElement x="453" y="5" width="100" height="21" uuid="aafb17a8-4cf4-47b1-95c1-d8a7bc5af664"/>
+				<box padding="1"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$V{monthlySubs1}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>
