@@ -358,6 +358,55 @@ public class ReportServiceImpl implements ReportService {
             throw new RuntimeException("Error downloading arrears: " + ex.getLocalizedMessage());
         }
     }
+    @Override
+    public void printTradeUnionReport(HttpServletResponse response, Long institutionId, LocalDate fromDate, LocalDate toDate, String userName) {
+
+        int male = 0, female = 0, total = 0;
+
+        Institution institution = institutionRepository.findById(Long.valueOf(institutionId)).orElseThrow(() ->
+                new RuntimeException("Institution with provided id not found"));
+
+        if (fromDate == null || toDate == null) {
+            throw new RuntimeException("Enter valid dates");
+        } else if (fromDate.compareTo(toDate) > 0) {
+            throw new RuntimeException("Enter valid date range");
+        } else {
+            try {
+                List<StopOrder> lstbyC = stoporderRepository.getSchedule(institutionId, fromDate, toDate);
+                if (lstbyC != null && !lstbyC.isEmpty()) {
+                    for (StopOrder s : lstbyC) {
+                        if ("M".equals(s.getMember().getGender())) {
+                            male += 1;
+
+                        } else if ("F".equals(s.getMember().getGender())) {
+                            female += 1;
+
+                        }
+                    }
+
+                    total = male + female;
+                    Map<String, Object> parameters = new HashMap<>();
+                    parameters.put("realPath", new ClassPathResource("/images/logo.png").getPath());
+                    parameters.put("male", male);
+                    parameters.put("female", female);
+                    parameters.put("total", total);
+                    parameters.put("printedby", userName);
+                    parameters.put("institutionName", institution.getSector().getTradeUnion().getTuName());
+                    parameters.put("heading", " All Members For " + institution.getInstitutionName() + " Recruited Between " + fromDate.toString() +
+                            " And " + toDate.toString());
+
+                    downloadPDF(response, "/reports/tradeUnionReport.jrxml", parameters, lstbyC);
+
+
+                } else {
+                    throw new RuntimeException("There are no records to show");
+                }
+            } catch (Exception ex) {
+                throw new RuntimeException("Error downloading schedule: " + ex.getLocalizedMessage());
+            }
+        }
+    }
+
 
 
     public javax.servlet.http.HttpServletResponse downloadPDF(HttpServletResponse response, String filename, Map<String, Object> parameters, List<?> lst) {
