@@ -44,6 +44,7 @@ private byte[] logo;
 @NotNull(message="TU Percentage is required")
 private Double tuPercentage;
 @Enumerated(EnumType.STRING)
+@Column(name="base_currency")
 private CurrencyEnum baseCurrency;
 
 }

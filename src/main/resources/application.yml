@@ -10,7 +10,7 @@ spring:
         enable_lazy_load_no_trans: true
         ddl-auto: update
   profiles:
-    active: dev2
+    active: staging
 
   jackson:
     serialization:
