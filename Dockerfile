@@ -29,26 +29,11 @@ RUN mvn -B clean package \
 #############################################################################################
 ###                Optional stage where Docker is running Sonar analysis                  ###
 #############################################################################################
-FROM build
-ARG SONAR_ENABLED=true
-ARG SONAR_URL=https://sonarqube.poscloud.co.zw
-# ARG SONAR_ORGANIZATION=
-ARG SONAR_USERNAME=admin
-ARG SONAR_PASSWORD=admin
-# ARG SONAR_BRANCH=
-RUN if [ "$SONAR_ENABLED" = "true" ] ; \
-    then mvn -B sonar:sonar \
-        -Dsonar.host.url=${SONAR_URL} \
- #       -Dsonar.organization=${SONAR_ORGANIZATION} \
- #       -Dsonar.branch.name=${SONAR_BRANCH} \
-        -Dsonar.login=${SONAR_USERNAME} \
-        -Dsonar.password=${SONAR_PASSWORD}; \
-    fi
 #############################################################################################
 #############################################################################################
 ### Stage where Docker is running a java process to run a service built in previous stage ###
 #############################################################################################
 FROM ${RUNTIME_IMAGE}
 COPY --from=build target/*.jar /app/service.jar
-CMD ["java", "-jar", "/app/service.jar"]
-#############################################################################################
+ENTRYPOINT ["java", "-jar", "/app/service.jar"]
+EXPOSE 8081
