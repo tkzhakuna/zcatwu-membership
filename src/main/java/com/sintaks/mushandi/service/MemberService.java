@@ -143,9 +143,11 @@ public List<MemberView>findAllActive(Long tuId){
 							if(Objects.isNull(st.getStopOrderNumber())){
 								int stopOrderNumber= Integer.parseInt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("HHmmSS")));
 								st.setStopOrderNumber(stopOrderNumber);
+
 								st.setSource("WEB");
 							}
 							entity.addStoporder(st);
+							entity.setStatus("NEW");
 						});
 				Member member=memberRep.save(entity);
 				log.info("Finsiehed Saving ===============================");
