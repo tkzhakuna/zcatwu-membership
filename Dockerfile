@@ -1,5 +1,5 @@
 ARG BUILD_IMAGE=maven:3.5-jdk-11
-ARG RUNTIME_IMAGE=openjdk:11-jdk-slim
+ARG RUNTIME_IMAGE=openjdk:11
 #############################################################################################
 ###                Stage where Docker is pulling all maven dependencies                   ###
 #############################################################################################
