@@ -215,7 +215,7 @@ In terms of the check off system provided for in the Collective Bargaining Agree
 	<detail>
 		<band height="26" splitType="Stretch">
 			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.grid.JSSGridBagLayout"/>
-			<textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 				<reportElement x="0" y="0" width="80" height="26" uuid="144f0706-21d0-4fd5-9bfe-36cecc3b1ea2">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ec417b22-9423-4f66-b908-df2bc533b748"/>
 				</reportElement>
@@ -225,7 +225,7 @@ In terms of the check off system provided for in the Collective Bargaining Agree
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{member.firstname}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 				<reportElement x="80" y="0" width="80" height="26" uuid="47c313d8-2332-4306-9a3d-330c527601d8">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b8095bfe-7ab5-494a-80af-812c35cafb8e"/>
 				</reportElement>
@@ -235,7 +235,7 @@ In terms of the check off system provided for in the Collective Bargaining Agree
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{member.surname}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 				<reportElement x="160" y="0" width="79" height="26" uuid="74758ab8-3880-4ce1-b748-1243e1b05e25">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1fe7af5e-9fb8-45ad-abd2-9e06f9519325"/>
 				</reportElement>
@@ -245,7 +245,7 @@ In terms of the check off system provided for in the Collective Bargaining Agree
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{member.dob}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 				<reportElement x="239" y="0" width="79" height="26" uuid="d0b26f48-cb9c-4915-bd73-eb41a103b35d">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5949358b-6eff-480e-900b-a7d36a1c6789"/>
 				</reportElement>
@@ -255,7 +255,7 @@ In terms of the check off system provided for in the Collective Bargaining Agree
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{member.nationalId}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 				<reportElement x="318" y="0" width="79" height="26" uuid="8a0f6c1b-d9cc-40af-9916-30549b9d4878">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c93e354b-bdf2-423b-8937-26ec4779fbe7"/>
 				</reportElement>
@@ -265,7 +265,7 @@ In terms of the check off system provided for in the Collective Bargaining Agree
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{member.gender}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 				<reportElement x="397" y="0" width="79" height="26" uuid="ce8f2573-5353-4d63-9186-e6f39c8c2b57">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b7be5087-4bc6-488a-bd39-bbc156d5dcdb"/>
 				</reportElement>
@@ -275,7 +275,7 @@ In terms of the check off system provided for in the Collective Bargaining Agree
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{member.grade.gradeCode}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 				<reportElement x="476" y="0" width="79" height="26" uuid="a2297300-23b6-4163-a42d-ad1d0682c6f7">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f74c22db-a19f-41eb-ae97-1b3ca74196dd"/>
 				</reportElement>
