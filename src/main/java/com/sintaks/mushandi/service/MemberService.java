@@ -141,7 +141,7 @@ public List<MemberView>findAllActive(Long tuId){
 				entity.getStoporders().stream()
 						.forEach(st-> {
 							if(Objects.isNull(st.getStopOrderNumber())){
-								int stopOrderNumber= Integer.parseInt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmSS")));
+								int stopOrderNumber= Integer.parseInt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("HHmmSS")));
 								st.setStopOrderNumber(stopOrderNumber);
 								st.setSource("WEB");
 							}
