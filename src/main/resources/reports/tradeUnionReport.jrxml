@@ -35,7 +35,7 @@
 	<field name="member.firstname" class="java.lang.String"/>
 	<field name="member.surname" class="java.lang.String"/>
 	<field name="member.nationalId" class="java.lang.String"/>
-	<field name="member.dob" class="java.lang.String"/>
+	<field name="member.dob" class="java.lang.Object"/>
 	<field name="member.gender" class="java.lang.String"/>
 	<field name="member.grade.gradeCode" class="java.lang.String"/>
 	<field name="member.cellNumber" class="java.lang.String"/>
@@ -47,40 +47,30 @@
 			<frame>
 				<reportElement x="0" y="-20" width="555" height="253" uuid="79ff81d4-731a-4835-8e68-388a71665e6f"/>
 				<textField>
-					<reportElement x="226" y="22" width="130" height="14" uuid="26dccd8e-0486-46d4-91cd-8ccabd315171"/>
+					<reportElement x="200" y="22" width="154" height="25" uuid="26dccd8e-0486-46d4-91cd-8ccabd315171"/>
 					<textElement>
-						<font size="11" isBold="true" isUnderline="true"/>
+						<font size="13" isBold="true" isUnderline="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA["EMPLOYER'S COPY"]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="120" y="40" width="343" height="30" uuid="b88fb18d-6a0f-4185-a5c9-45ec39853598"/>
+					<reportElement x="106" y="47" width="343" height="20" uuid="b88fb18d-6a0f-4185-a5c9-45ec39853598"/>
 					<textElement textAlignment="Center">
 						<font size="11" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA["ZIMBABWE CONSTRUCTION AND ALLIED TRADES"]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="210" y="89" width="147" height="21" uuid="ef13407e-1d48-4bdf-85fe-2964a036c03a"/>
+					<reportElement x="204" y="89" width="147" height="21" uuid="ef13407e-1d48-4bdf-85fe-2964a036c03a"/>
 					<textElement textAlignment="Center"/>
 					<textFieldExpression><![CDATA["(Registered Organisation)"]]></textFieldExpression>
-				</textField>
-				<textField>
-					<reportElement x="463" y="98" width="90" height="53" uuid="bac46e91-1aa1-419d-8e15-84c2d5ee2209"/>
-					<textElement textAlignment="Right"/>
-					<textFieldExpression><![CDATA[" St Barbara House 3rd Floor            P.O Box 1291 Harare"]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement x="0" y="91" width="180" height="19" uuid="9b7f01e2-6810-4224-b1ac-184935e537df"/>
 					<textFieldExpression><![CDATA["Telephone 0242-773953 "]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="80" y="135" width="374" height="20" uuid="63ef04b2-8b99-4362-882f-6d9f06efc07a"/>
-					<textElement textAlignment="Center"/>
-					<textFieldExpression><![CDATA["(as approved by the N.E.C for the Construction Industry of Zimbabwe)"]]></textFieldExpression>
-				</textField>
-				<textField>
-					<reportElement x="233" y="115" width="100" height="18" uuid="dff591c1-780a-4cfd-a0ae-d94ec990bfc0"/>
+					<reportElement x="227" y="115" width="100" height="18" uuid="dff591c1-780a-4cfd-a0ae-d94ec990bfc0"/>
 					<textElement textAlignment="Center">
 						<font size="10" isBold="true"/>
 					</textElement>
@@ -88,34 +78,49 @@
 				</textField>
 				<staticText>
 					<reportElement x="0" y="203" width="555" height="50" uuid="f266103f-e8e1-41c7-8a7f-d65e5c7a4b12"/>
-					<text><![CDATA[Dear Sir/Madam
-In terms of the check off system provided for in the Collective Bargaining Agreement published in S1 45 of 2013 Clause 12,we the undersigned hereby request and authorize our employer to make deductions from our wages in accordance with the instructions herein payment, through the NECCIZ to ZCATWU.]]></text>
+					<textElement>
+						<font isBold="false"/>
+					</textElement>
+					<text><![CDATA[Dear Sir/Madam- We the undersigned do hereby join ZCATWU and in terms of the check off system provided for in the Collective Bargaining Agreement published in SI 45, 2013 we hereby instruct and authorize our employer to make a deductions of 5% from our wages in accordance with the instruction herein payment, through ZCATWU.]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="180" y="70" width="181" height="21" uuid="5759bec8-d62c-4158-900a-46dcc6f2123b"/>
+					<reportElement x="187" y="70" width="181" height="21" uuid="5759bec8-d62c-4158-900a-46dcc6f2123b"/>
 					<textElement textAlignment="Center">
 						<font size="11" isBold="true"/>
 					</textElement>
-					<text><![CDATA[   WORKERS' UNION]]></text>
+					<text><![CDATA[   WORKER'S UNION]]></text>
 				</staticText>
 				<staticText>
 					<reportElement x="453" y="82" width="100" height="14" uuid="e6822353-49df-487b-b037-9323d5fd49ce"/>
 					<textElement textAlignment="Right">
 						<font isBold="true" isUnderline="true"/>
 					</textElement>
-					<text><![CDATA[HEADQUARTERS]]></text>
+					<text><![CDATA[HEAD OFFICE]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="0" y="158" width="555" height="15" uuid="34607dd4-5165-4baf-925d-25e4828d4563"/>
-					<text><![CDATA[To.........................................................................................................................................................................................]]></text>
+					<reportElement x="10" y="158" width="545" height="15" uuid="34607dd4-5165-4baf-925d-25e4828d4563"/>
+					<textElement verticalAlignment="Bottom"/>
+					<text><![CDATA[To..................................................................................................................................................................................................]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="0" y="175" width="260" height="22" uuid="394a2edf-27b9-487a-9ebd-6fd2cfedfed8"/>
+					<reportElement x="10" y="175" width="250" height="22" uuid="394a2edf-27b9-487a-9ebd-6fd2cfedfed8"/>
+					<textElement verticalAlignment="Bottom"/>
 					<text><![CDATA[Site........................................................................]]></text>
 				</staticText>
 				<staticText>
 					<reportElement x="281" y="175" width="272" height="22" uuid="3919156a-51df-4e0f-b4c2-e25b53eef1a9"/>
+					<textElement verticalAlignment="Bottom"/>
 					<text><![CDATA[Region................................................................................]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="91" y="137" width="373" height="30" uuid="4d49e268-c6f5-4a9b-b745-605c705a6ad9"/>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[(As approved by N.E.C for the Construction Industry of Zimbabwe)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="453" y="96" width="99" height="58" uuid="7e018e29-7b90-4dab-a301-5b18be627168"/>
+					<textElement textAlignment="Right"/>
+					<text><![CDATA[St Barbara House     3rd Floor                    P.O Box 1291           Harare]]></text>
 				</staticText>
 			</frame>
 		</band>
@@ -287,21 +292,17 @@ In terms of the check off system provided for in the Collective Bargaining Agree
 			</textField>
 		</band>
 	</detail>
-	<summary>
-		<band height="106" splitType="Stretch">
+	<lastPageFooter>
+		<band height="173">
 			<staticText>
-				<reportElement x="-1" y="37" width="555" height="57" uuid="307c36e1-b441-47e9-b400-904f9090b012"/>
-				<text><![CDATA[The amounts to be deducted shall be in terms of the NECCIZ notice in terms of Clause 12, (1) of the CBA and amended from time to time. The employer should deduct the dues on the pay day of the week in which the stop order is received and not later than two pay periods. The deductions and payment are to continue until cancelled only by me / us through the 
-union offices.]]></text>
+				<reportElement x="5" y="74" width="547" height="86" uuid="307c36e1-b441-47e9-b400-904f9090b012"/>
+				<text><![CDATA[The amounts to be deducted shall be in terms of the NECCIZ notice in terms of Clause 12, (1) of the CBA and amended from time to time. The employer should deduct the dues on the pay day of the week in which the stop order is received and not later than two pay periods. The deductions and payment are to continue until cancelled only by me/us through the union offices.
+Witness..........................................................(Trade Union Official) Date:....................................................
+                                                                                                                      Sydiomatrix 0712 722 389]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="0" y="7" width="323" height="20" uuid="24bb3b4c-c40e-4be5-bf3f-fb8bd11a47c0"/>
-				<textFieldExpression><![CDATA["Date.....................................................(Trade Union Official)"]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="332" y="7" width="223" height="20" uuid="3d6c93db-ff99-4907-b53a-463dbfff82c0"/>
-				<textFieldExpression><![CDATA["Date................................................................................"]]></textFieldExpression>
-			</textField>
 		</band>
+	</lastPageFooter>
+	<summary>
+		<band height="106" splitType="Stretch"/>
 	</summary>
 </jasperReport>
