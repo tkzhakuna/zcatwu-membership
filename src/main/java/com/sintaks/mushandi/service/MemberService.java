@@ -151,7 +151,7 @@ public class MemberService implements BaseService<Member> {
                             if (Objects.isNull(st.getStopOrderNumber())) {
                                 int stopOrderNumber = Integer.parseInt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("HHmmSS")));
                                 st.setStopOrderNumber(stopOrderNumber);
-                                if (Objects.isNull(st.getInstitution())) {
+                                if (!Objects.isNull(st.getInstitution())) {
                                     st.setInstitution(institution);
                                 }
                                 st.setSource("WEB");
