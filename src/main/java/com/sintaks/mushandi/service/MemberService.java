@@ -159,7 +159,7 @@ public class MemberService implements BaseService<Member> {
                                 st.setSource("WEB");
                             }
                             entity.addStoporder(st);
-                            entity.setStatus("New");
+                            entity.setStatus("WEB");
                         });
                 Member member = memberRep.save(entity);
                 log.info("Finished Saving ===============================");
