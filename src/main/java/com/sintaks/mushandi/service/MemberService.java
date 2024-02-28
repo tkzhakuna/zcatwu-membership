@@ -24,6 +24,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.NotNull;
@@ -151,7 +152,7 @@ public class MemberService implements BaseService<Member> {
                             if (Objects.isNull(st.getStopOrderNumber())) {
                                 int stopOrderNumber = Integer.parseInt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("HHmmSS")));
                                 st.setStopOrderNumber(stopOrderNumber);
-                                if (Objects.isNull(st.getInstitution())) {
+                                if (Objects.isNull(st.getInstitution())||!StringUtils.isEmpty(st.getCompany())) {
                                     st.setInstitution(institution);
                                     log.info("Saving ==============================="+institution);
                                 }
@@ -161,7 +162,7 @@ public class MemberService implements BaseService<Member> {
                             entity.setStatus("New");
                         });
                 Member member = memberRep.save(entity);
-                log.info("Finsiehed Saving ===============================");
+                log.info("Finished Saving ===============================");
                 return member;
             } catch (Exception ex) {
 ex.printStackTrace();
