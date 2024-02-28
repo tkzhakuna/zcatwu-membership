@@ -143,8 +143,9 @@ public class MemberService implements BaseService<Member> {
             }
 
             try {
-                log.info("Saving ===============================");
+
                 final var institution = institutionRepository.findByInstitutionName("Temp");
+                log.info("Saving ==============================="+institution);
                 entity.getStoporders().stream()
                         .forEach(st -> {
                             if (Objects.isNull(st.getStopOrderNumber())) {
