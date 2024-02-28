@@ -145,14 +145,15 @@ public class MemberService implements BaseService<Member> {
             try {
 
                 final var institution = institutionRepository.findByInstitutionName("Temp");
-                log.info("Saving ==============================="+institution);
+
                 entity.getStoporders().stream()
                         .forEach(st -> {
                             if (Objects.isNull(st.getStopOrderNumber())) {
                                 int stopOrderNumber = Integer.parseInt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("HHmmSS")));
                                 st.setStopOrderNumber(stopOrderNumber);
-                                if (!Objects.isNull(st.getInstitution())) {
+                                if (Objects.isNull(st.getInstitution())) {
                                     st.setInstitution(institution);
+                                    log.info("Saving ==============================="+institution);
                                 }
                                 st.setSource("WEB");
                             }
@@ -163,7 +164,7 @@ public class MemberService implements BaseService<Member> {
                 log.info("Finsiehed Saving ===============================");
                 return member;
             } catch (Exception ex) {
-
+ex.printStackTrace();
                 throw new NotSavedException("Member not saved: " + ex.getLocalizedMessage());
             }
 
