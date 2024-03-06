@@ -61,6 +61,11 @@ public class ReportController {
                            @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate toDate, Principal principal) {
         reportService.printSchedule(response, companyId, fromDate, toDate, principal.getName());
     }
+    @GetMapping("/download-trade-union-report/{companyId}/{fromDate}/{toDate}")
+    public void downloadTradeUnionReport(HttpServletResponse response, @PathVariable Long companyId, @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate fromDate,
+                           @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate toDate, Principal principal) {
+        reportService.printTradeUnionReport(response, companyId, fromDate, toDate, principal.getName());
+    }
 
     @GetMapping("/download-recruitment-schedule/{fromDate}/{toDate}")
     public ResponseEntity<?> downloadSoSchedule(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate fromDate,

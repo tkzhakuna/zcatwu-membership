@@ -21,7 +21,7 @@ public interface ReportService {
     List<ReportDTO> findByInstitution(String username);
 
     void printSchedule(HttpServletResponse response, Long institutionId, LocalDate fromDate, LocalDate toDate, String userName);
-
+    public void printTradeUnionReport(HttpServletResponse response, Long institutionId, LocalDate fromDate, LocalDate toDate, String userName) ;
     ResponseEntity<?> downloadSchedule( LocalDate fromDate, LocalDate toDate, String userName);
 
     void viewMemberReport(HttpServletResponse response, Long institutionId, String username);

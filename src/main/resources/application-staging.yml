@@ -5,9 +5,9 @@ spring:
   #Flames DataSource
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: "jdbc:mysql://localhost:3306/mushandi1?zeroDateTimeBehavior=EXCEPTION&useSSL=false&allowPublicKeyRetrieval=true&autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&failOverReadOnly=false&allowMultiQueries=true&useLegacyDatetimeCode=false&serverTimezone=Africa/Harare"
-    username: 'root'
-    password: 'Password@1'
+    url: "jdbc:mysql://167.86.86.168:3306/mushandi_zcatwu_test?zeroDateTimeBehavior=EXCEPTION&useSSL=false&allowPublicKeyRetrieval=true&autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&failOverReadOnly=false&allowMultiQueries=true&useLegacyDatetimeCode=false&serverTimezone=Africa/Harare"
+    username: 'admin'
+    password: 'GknotFl@m3s2'
     #driverClassName: com.mysql.cj.jdbc.Driver
 
   jpa:

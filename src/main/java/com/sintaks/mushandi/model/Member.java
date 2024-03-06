@@ -83,6 +83,7 @@ public class Member {
     @OneToMany(mappedBy="member",fetch=FetchType.LAZY)
     private List<Bill>bills=new ArrayList<>();
     @CreatedDate
+	@Column(name="created_at")
     private LocalDate createdAt;
     @OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL,mappedBy="member", orphanRemoval = true)
     private List<StopOrder>stoporders = new ArrayList<>();

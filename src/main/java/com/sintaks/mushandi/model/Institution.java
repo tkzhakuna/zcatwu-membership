@@ -46,6 +46,12 @@ public class Institution {
 	@NotNull(message="Currency is required")
 	@Enumerated(EnumType.STRING)
 	private CurrencyEnum currency;
-	
-	
+
+	@Override
+	public String toString() {
+		return "Institution{" +
+				"id=" + id +
+				", institutionName='" + institutionName + '\'' +
+				'}';
+	}
 }
