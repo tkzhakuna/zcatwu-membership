@@ -18,6 +18,7 @@ import com.sintaks.mushandi.repository.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Pageable;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -264,10 +265,10 @@ public class ReceiptBatchServiceImpl implements ReceiptBatchService {
 	}
 
 	@Override
-	public List<ReceiptBatch> findAll() {
+	public List<ReceiptBatch> findAll(Pageable pageable) {
 		List<ReceiptBatch>batchList;
 		try{
-			batchList=rbr.findAll();
+			batchList=rbr.findAll(pageable).getContent();
 		}catch (Exception ex){
 			throw new UnexpectedException("Error retrieving batch list: "+ex.getLocalizedMessage());
 		}

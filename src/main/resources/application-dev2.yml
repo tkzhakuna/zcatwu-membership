@@ -1,14 +1,14 @@
 server:
-  port: 9000
+  port: 8081
 spring:
   h2:
     console:
       enabled: true
   datasource:
-    url: "jdbc:mysql://localhost:3306/mushandi?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Africa/Harare"
+    url: "jdbc:mysql://localhost:3306/mushandi_zcatwu?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Africa/Harare"
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: 'root'
-    password: 'root'
+    password: 'Password@1'
 
 
   jpa:

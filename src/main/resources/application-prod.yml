@@ -20,7 +20,7 @@ spring:
 
 
   datasource:
-    url: "jdbc:mysql://localhost:3306/mushandi_zcatwu?useSSL=false&autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&failOverReadOnly=false&allowMultiQueries=true&useLegacyDatetimeCode=false&serverTimezone=Africa/Harare"
+    url: "jdbc:mysql://167.86.86.168:3306/mushandi_zcatwu?useSSL=false&autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&failOverReadOnly=false&allowMultiQueries=true&useLegacyDatetimeCode=false&serverTimezone=Africa/Harare"
     username: 'admin'
     password: 'GknotFl@m3s2'
 
