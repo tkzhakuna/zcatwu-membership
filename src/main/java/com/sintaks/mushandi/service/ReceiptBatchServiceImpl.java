@@ -6,22 +6,35 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import com.sintaks.mushandi.exceptions.NotDeletedException;
 import com.sintaks.mushandi.exceptions.NotFoundException;
 import com.sintaks.mushandi.exceptions.NotSavedException;
 import com.sintaks.mushandi.exceptions.UnexpectedException;
 import com.sintaks.mushandi.model.*;
+import com.sintaks.mushandi.model.dto.ReportDTO;
+import com.sintaks.mushandi.model.projections.BatchProjection;
 import com.sintaks.mushandi.repository.*;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.domain.Pageable;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+
+import javax.servlet.http.HttpServletResponse;
 
 @Service
 public class ReceiptBatchServiceImpl implements ReceiptBatchService {
@@ -279,6 +292,45 @@ public class ReceiptBatchServiceImpl implements ReceiptBatchService {
 			throw new NotFoundException("No batches Found");
 		}
 	}
-	
-	
+
+	public HttpServletResponse viewBatches(HttpServletResponse response, String name, LocalDate batchDate) {
+		User user = userRepository.findByUsername(name);
+
+		List<BatchProjection> members = rbr.findActive(batchDate);
+
+		Map<String, Object> parameters = new HashMap<>();
+//		parameters.put("abbreviation", user.getEmployee().getTradeUnion().getAbbreviation());
+		parameters.put("tradeunion", user.getEmployee().getTradeUnion().getTuName());
+		parameters.put("printedby", user.getFullName());
+		parameters.put("heading", "Active Members "+batchDate.format(DateTimeFormatter.ofPattern("MM-yyyy")));
+		parameters.put("realPath", new ClassPathResource("/images/logo.png").getPath());
+
+		try {
+			return downloadPDF(response, "/reports/receipt_batch_report.jrxml", parameters, members);
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			return null;
+		}
+
+	}
+
+	public javax.servlet.http.HttpServletResponse downloadPDF(HttpServletResponse response, String filename, Map<String, Object> parameters, List<?> lst) {
+
+		try {
+			InputStream input = new ClassPathResource(filename).getInputStream();
+			JasperDesign jasperDesign = JRXmlLoader.load(input);
+			JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
+			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, new JRBeanCollectionDataSource(lst));
+
+			JasperExportManager.exportReportToPdfStream(jasperPrint, response.getOutputStream());
+			response.setContentType("application/pdf");
+			response.addHeader("Content-Disposition", "inline; filename=invoice.pdf");
+
+			return response;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			throw new RuntimeException("Error downloading schedule");
+		}
+	}
 }
