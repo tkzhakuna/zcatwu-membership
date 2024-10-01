@@ -14,10 +14,10 @@
 	<field name="male" class="java.lang.Integer"/>
 	<field name="female" class="java.lang.Integer"/>
 	<field name="institution" class="java.lang.String"/>
-	<variable name="male1" class="java.lang.Integer" resetType="Page" calculation="Sum">
+	<variable name="male1" class="java.lang.Integer" calculation="Sum">
 		<variableExpression><![CDATA[$F{male}]]></variableExpression>
 	</variable>
-	<variable name="female1" class="java.lang.Integer" resetType="Page" calculation="Sum">
+	<variable name="female1" class="java.lang.Integer" calculation="Sum">
 		<variableExpression><![CDATA[$F{female}]]></variableExpression>
 	</variable>
 	<variable name="total" class="java.lang.Integer">
