@@ -109,4 +109,10 @@ public class ReceiptBatchController {
 						@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate batchDate){
 		rbsi.viewBatches(response,principal.getName(),batchDate);
 	}
+
+	@GetMapping("/batch-print/{batchId}")
+	public void printBatch(HttpServletResponse response, Principal principal,
+						@PathVariable Integer batchId){
+		rbsi.printBatch(response,principal.getName(),batchId);
+	}
 }

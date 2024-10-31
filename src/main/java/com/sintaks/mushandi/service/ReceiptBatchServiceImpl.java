@@ -18,7 +18,6 @@ import com.sintaks.mushandi.exceptions.NotFoundException;
 import com.sintaks.mushandi.exceptions.NotSavedException;
 import com.sintaks.mushandi.exceptions.UnexpectedException;
 import com.sintaks.mushandi.model.*;
-import com.sintaks.mushandi.model.dto.ReportDTO;
 import com.sintaks.mushandi.model.projections.BatchProjection;
 import com.sintaks.mushandi.repository.*;
 import net.sf.jasperreports.engine.*;
@@ -34,6 +33,7 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.persistence.EntityNotFoundException;
 import javax.servlet.http.HttpServletResponse;
 
 @Service
@@ -312,6 +312,29 @@ public class ReceiptBatchServiceImpl implements ReceiptBatchService {
 			ex.printStackTrace();
 			return null;
 		}
+
+	}
+
+	public HttpServletResponse printBatch(HttpServletResponse response, String name, Integer batchId){
+		User user = userRepository.findByUsername(name);
+		ReceiptBatch batch=rbr.findById(Long.valueOf(batchId)).orElseThrow(()->new EntityNotFoundException("Batch not found"));
+
+
+
+		Map<String, Object> parameters = new HashMap<>();
+		parameters.put("tradeunion", user.getEmployee().getTradeUnion().getTuName());
+		parameters.put("printedby", user.getFullName());
+		parameters.put("heading", "Subscriptions for "+batch.getInstitution().getInstitutionName()+" for  "+ batch.getReceiptNumber());
+		parameters.put("realPath", new ClassPathResource("/images/logo.png").getPath());
+
+		try {
+			return downloadPDF(response, "/reports/batch_report.jrxml", parameters, batch.getReceiptList());
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			return null;
+		}
+
 
 	}
 

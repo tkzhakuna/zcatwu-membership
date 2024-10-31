@@ -26,4 +26,6 @@ public interface ReceiptBatchService {
 	CompletableFuture<List<Receipt>>saveReceipt(MultipartFile file,String username,Long batchId)throws Exception;
 
 	HttpServletResponse viewBatches(HttpServletResponse response, String name, LocalDate batchDate);
+
+	HttpServletResponse printBatch(HttpServletResponse response, String name, Integer batchId);
 }

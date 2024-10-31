@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.16.0-48579d909b7943b64690c65c71e07e0b80981928  -->
+<!-- Created with Jaspersoft Studio version 6.20.5.final using JasperReports Library version 6.20.5-3efcf2e67f959db3888d79f73dde2dbd7acb4f8e  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="membership_report" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2b8c6155-9b5a-4454-97b3-ac97414c6cff">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<parameter name="abbreviation" class="java.lang.String"/>
@@ -119,7 +119,7 @@
 				<text><![CDATA[Grade]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="310" y="1" width="190" height="20" uuid="a828fd19-2b9b-4e46-851e-6e7a57d58e77"/>
+				<reportElement x="310" y="1" width="180" height="20" uuid="a828fd19-2b9b-4e46-851e-6e7a57d58e77"/>
 				<box padding="2">
 					<pen lineColor="#E1EEFA"/>
 					<topPen lineWidth="1.0" lineColor="#E1EEFA"/>
@@ -133,7 +133,7 @@
 				<text><![CDATA[Institution]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="500" y="1" width="53" height="20" uuid="8704e12b-20fa-48a7-92bb-0e86522f982e"/>
+				<reportElement x="490" y="1" width="63" height="20" uuid="8704e12b-20fa-48a7-92bb-0e86522f982e"/>
 				<box padding="2">
 					<pen lineColor="#E1EEFA"/>
 					<topPen lineWidth="1.0" lineColor="#E1EEFA"/>
@@ -184,7 +184,7 @@
 				<textFieldExpression><![CDATA[$F{grade}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="310" y="0" width="190" height="20" uuid="1cb2b83c-c0ea-4070-8ca2-bf78b89b418d"/>
+				<reportElement x="310" y="0" width="180" height="20" uuid="1cb2b83c-c0ea-4070-8ca2-bf78b89b418d"/>
 				<box padding="2">
 					<pen lineColor="#E1EEFA"/>
 					<topPen lineWidth="1.0" lineColor="#E1EEFA"/>
@@ -195,7 +195,7 @@
 				<textFieldExpression><![CDATA[$F{institution}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="500" y="0" width="53" height="20" uuid="6c76c4a8-ca2c-4679-85b0-53db01cf56de"/>
+				<reportElement x="490" y="0" width="63" height="20" uuid="6c76c4a8-ca2c-4679-85b0-53db01cf56de"/>
 				<box padding="2">
 					<pen lineColor="#E1EEFA"/>
 					<topPen lineWidth="1.0" lineColor="#E1EEFA"/>
