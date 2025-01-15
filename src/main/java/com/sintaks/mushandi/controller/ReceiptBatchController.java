@@ -3,13 +3,19 @@ package com.sintaks.mushandi.controller;
 import java.net.URISyntaxException;
 import java.nio.file.Paths;
 import java.security.Principal;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -66,7 +72,9 @@ public class ReceiptBatchController {
 	
 	@GetMapping("/receiptBatches")
 	public List<ReceiptBatch>findAll(){
-		return rbsi.findAll();
+		Pageable pageable= PageRequest.of(0,1000000, Sort.by(Sort.Direction.DESC,"id"));
+
+		return rbsi.findAll(pageable);
 	}
 
 	@GetMapping("/receiptBatches/{id}")
@@ -94,5 +102,17 @@ public class ReceiptBatchController {
 	public ResponseEntity<?> deleteReceiptBatch(@PathVariable Long id) {
 		rbsi.deleteBatch(id);
 		return new ResponseEntity<>(HttpStatus.OK);
+	}
+
+	@GetMapping("/batch-list/{batchDate}")
+	public void findAll(HttpServletResponse response, Principal principal,
+						@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate batchDate){
+		rbsi.viewBatches(response,principal.getName(),batchDate);
+	}
+
+	@GetMapping("/batch-print/{batchId}")
+	public void printBatch(HttpServletResponse response, Principal principal,
+						@PathVariable Integer batchId){
+		rbsi.printBatch(response,principal.getName(),batchId);
 	}
 }
