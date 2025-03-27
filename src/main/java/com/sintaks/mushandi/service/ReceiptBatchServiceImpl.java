@@ -18,6 +18,7 @@ import com.sintaks.mushandi.exceptions.UnexpectedException;
 import com.sintaks.mushandi.model.*;
 import com.sintaks.mushandi.model.projections.BatchProjection;
 import com.sintaks.mushandi.repository.*;
+import lombok.extern.slf4j.Slf4j;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.design.JasperDesign;
@@ -34,6 +35,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.persistence.EntityNotFoundException;
 import javax.servlet.http.HttpServletResponse;
 
+@Slf4j
 @Service
 public class ReceiptBatchServiceImpl implements ReceiptBatchService {
 
@@ -179,6 +181,7 @@ public class ReceiptBatchServiceImpl implements ReceiptBatchService {
                 logger.info("Not found error {}", ex.getLocalizedMessage());
                 throw new NotFoundException(ex.getLocalizedMessage());
             } else {
+                ex.printStackTrace();
                 throw new UnexpectedException("Error saving receipts");
             }
         }
@@ -214,7 +217,7 @@ public class ReceiptBatchServiceImpl implements ReceiptBatchService {
             while ((line = br.readLine()) != null) {
                 final String[] data = line.split(",");
                 final Receipt receipt = new Receipt();
-                Member member;
+                Member member=null;
                 try {
                     member = memberRepository.findByIdAndInstitution(Long.valueOf(data[0].replace("\"", "")), batch.getInstitution().getId());
                     if (member == null) {
@@ -222,7 +225,7 @@ public class ReceiptBatchServiceImpl implements ReceiptBatchService {
                     }
                 } catch (NotFoundException ex) {
                     logger.error("Member not found: " + Long.valueOf(data[0].replace("\"", "")));
-                    throw new NotFoundException("A member in the list does not belong to this institution");
+                    log.error("A member in the list does not belong to this institution");
 
                 } catch (Exception ex) {
                     logger.error("Member not found: {}", ex.getLocalizedMessage());
@@ -230,6 +233,7 @@ public class ReceiptBatchServiceImpl implements ReceiptBatchService {
                 }
 
                 try {
+                    log.info("Saving receipt for member {}", member.getId());
                     receipt.setMember(member);
                     receipt.setCycleNumber(batch.getCycleNumber());
                     receipt.setAmount(Double.parseDouble(data[1].replace("\"", "")));
