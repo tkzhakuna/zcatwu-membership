@@ -14,7 +14,7 @@ import com.sintaks.mushandi.model.dto.ReportDTO;
 
 
 public interface MemberRepository extends JpaRepository<Member, Long> {
-	@Query("SELECT COUNT(m.id) FROM Member m WHERE m.nationalId = ?1 and m.grade.sector.tradeUnion.id = ?2 ")
+	@Query("SELECT COUNT(m.id) FROM Member m WHERE  m.nationalId = ?1 and m.grade.sector.tradeUnion.id = ?2 ")
 	long checkUniqueNationalId(String nationalId,Long tuId);
 	@Query("SELECT COUNT(m.id) FROM Member m WHERE m.nationalId = ?1 and m.id<>?2 and m.grade.sector.tradeUnion.id = ?3")
 	long findByNationalIdAndTU(String nationalId,Long memberId,Long tuId);

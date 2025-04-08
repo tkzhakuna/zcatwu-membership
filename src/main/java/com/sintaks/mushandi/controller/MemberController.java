@@ -80,7 +80,7 @@ public ResponseEntity<?>findArrears(@PathVariable Long tuId,@PathVariable Boolea
 }
 	@PostMapping(path="/members-new",consumes={MediaType.APPLICATION_JSON_VALUE},produces={MediaType.APPLICATION_JSON_VALUE})
 	public ResponseEntity<Member>addMemberNew(@Valid @RequestBody Member member){
-	log.info("Request from casper ---------------------------");
+
 //	ResponseEntity<?> errorMap = mapValidationErrorService.MapValidationService(result);
 //    if(errorMap!=null)
 //    	return errorMap;
