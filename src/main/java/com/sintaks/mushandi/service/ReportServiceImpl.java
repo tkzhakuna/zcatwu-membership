@@ -49,7 +49,7 @@ public class ReportServiceImpl implements ReportService {
         if (user != null) {
             TradeUnion tu = user.getEmployee().getTradeUnion();
             try {
-                count = memberRepository.findByGender(gender, tu.getId());
+                count = memberRepository.findByGender(gender);
             } catch (Exception ex) {
                 throw new NotFoundException("Error counting members by gender: " + ex.getLocalizedMessage());
             }
@@ -80,7 +80,7 @@ public class ReportServiceImpl implements ReportService {
             try {
                 TradeUnion tu = user.getEmployee().getTradeUnion();
                 LocalDate youthDate = LocalDate.now().minusYears(35);
-                count = memberRepository.findYouthsByGender(youthDate, gender, tu.getId());
+                count = memberRepository.findYouthsByGender(youthDate, gender);
 
             } catch (Exception ex) {
                 throw new UnexpectedException("Error finding members by gender: " + ex.getLocalizedMessage());

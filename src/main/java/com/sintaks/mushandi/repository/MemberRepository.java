@@ -21,11 +21,11 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
 	@Query("FROM Member m WHERE m.nationalId = ?1  and m.grade.sector.tradeUnion.id = ?2")
 	Member findMemberByNationalIdAndTU(String nationalId,Long tuId);
 	
-	@Query("SELECT COUNT(m.id) FROM Member m WHERE m.gender =:gender  and m.status='Active' AND m.grade.sector.tradeUnion.id =:tuId ")
-	Long findByGender(@Param("gender")String gender,@Param("tuId")Long tuId);
+	@Query("SELECT COUNT(m.id) FROM Member m WHERE m.gender =:gender  and m.status='Active'")
+	Long findByGender(@Param("gender")String gender);
 	
-	@Query("SELECT COUNT(m.id) FROM Member m WHERE m.dob>:date AND m.gender =:gender  and m.status='Active' AND m.grade.sector.tradeUnion.id =:tuId ")
-	Long findYouthsByGender(@Param("date")LocalDate date, @Param("gender")String gender,@Param("tuId")Long tuId); 
+	@Query("SELECT COUNT(m.id) FROM Member m WHERE m.dob>:date AND m.gender =:gender  and m.status='Active'")
+	Long findYouthsByGender(@Param("date")LocalDate date, @Param("gender")String gender);
 	
 	@Query("SELECT new ReportDTO( (m.currentBranch.branchName) as label, count(m.id) as counts) from Member m where m.status='Active' AND m.grade.sector.tradeUnion.id =:tuId  group by m.currentBranch.branchName")
 	List<ReportDTO> findByBranch(@Param("tuId")Long tuId);
